@@ -1,0 +1,36 @@
+:root{
+    --primary-color:#594545;
+    --secondary-color:#9E7676;
+    --tertiary-color:#FFF8EA;
+}
+.new-book-controle {
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+.new-book-controle label {
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    color: var(--tertiary-color);
+
+}
+
+.new-book-controle input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 2px solid var(--primary-color);
+    width: 20rem;
+    max-width: 100%;
+    margin-left: 20px;
+}
+.new-book{
+    margin-top: 12rem;
+
+}
+form{
+    background-color: var(--primary-color);
+    border-radius: 30px;
+}
+

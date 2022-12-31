@@ -1,0 +1,28 @@
+:root{
+    --primary-color:#594545;
+    --secondary-color:#9E7676;
+    --tertiary-color:#FFF8EA;
+}
+.new-book {
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    }
+    .new-book button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 3rem;
+    margin: 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    border-radius: 12px;
+    }
+    .new-book button:hover,
+    .new-book button:active {
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+    }

@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+:root{
+   --primary-color:#594545;
+   --secondary-color:#9E7676;
+   --tertiary-color:#FFF8EA;
+}
+body{
+   background-color: var(--primary-color);
+}
+html{
+   font-size: 75.5%;
+}
+.row {
+   position: absolute;
+   top: 80px;
+   margin-left: auto;
+   margin-right: auto;
+   left: 0;
+   right: 0;
+   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row h1 {
+   font-size: 3rm;
+   margin-top: 20px;
+   margin-bottom: 15px;
+   color: var(--tertiary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row img {
+   margin-top: 30px;
+   width: 250px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.search {
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.search input {
+   outline: 0;
+   border: 0;
+   width: 350px;
+   height: 35px;
+   padding: 0 0.5rem;
+   font-size: 15px;
+   font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search button {
+   outline: none;
+   border: none;
+   height: 35px;
+   padding: 0 0.5rem;
+   cursor: pointer;
+}
+.header{
+   width: 100%;
+   height: 500px;
+   color: var(--secondary-color);
+   box-shadow: 0 5px 10px var(--secondary-color);
+   display: flex;
+   align-items: center;
+   background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(../src/images/cover.jpg);
+   background-position:center;
+   background-size: cover;
+}
+.container{
+   width: 65%;
+   margin: 0 auto;
+   margin-top: 25px;
+   display: grid;
+   grid-template-columns: repeat(auto-fit,minmax(200px,0.5fr));
+   grid-gap: 35px;
+   box-sizing: border-box;
 }
