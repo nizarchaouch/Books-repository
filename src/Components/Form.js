@@ -2,13 +2,15 @@ import { useState } from "react";
 import "./Form.css"
 function Form(props) {
     const [book, setBook] = useState({
-        image: "",
         title: "",
+        imageLinks:{
+            smallThumbnail:"" ,
+        },
     });
     const [imageIsValid, setimageIsValid] = useState(true);
     const [titleIsValid, setTitleIsValid] = useState(true);
     const ImageHandler = (event) => {
-        setBook({ ...book, image: event.target.value });
+        setBook({ ...book,imageLinks:{smallThumbnail:event.target.value}});
         setimageIsValid(true);
     }
     const TitleHandler = (event) => {
@@ -17,7 +19,7 @@ function Form(props) {
     };
     const submit = (event) => {
         event.preventDefault();
-        if (book.image.trim() === "") {
+        if (book.imageLinks.smallThumbnail.trim() === "") {
             setimageIsValid(false);
         }
         if (book.title.trim() === "") {
@@ -25,13 +27,13 @@ function Form(props) {
         }
         const newBook = {
             ...book,
-            image: book.image,
+            imageLinks: book.imageLinks,
             title: book.title,
         };
         props.onsaveData(newBook);
         console.log(newBook);
         setBook({
-            image: "",
+            imageLinks:{smallThumbnail:""} ,
             title: "",
         });
     };
@@ -44,7 +46,7 @@ function Form(props) {
                 </div>
                 <div className="new-book-controle">
                     <label style={{ color: imageIsValid ? "#FFF8EA" : "red" }}>Image</label>
-                    <input type="url" value={book.image} onChange={ImageHandler} />
+                    <input type="url" value={book.imageLinks.smallThumbnail} onChange={ImageHandler} />
                     <label>{!imageIsValid ? "*obligatory" : ""}</label>
                 </div>
                 <button type="submit" onClick={submit}>
