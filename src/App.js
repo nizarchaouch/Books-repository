@@ -5,29 +5,6 @@ import Card from './Components/Card';
 import { useState } from 'react';
 
 function App() {
-  // const books = [
-  //   {
-  //     id: "1",
-  //     image: "//books.google.com/books/content?id=xEApjgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-  //     title: "React js",
-  //     amount: "$320",
-  //   },
-  //     {
-  //       image:"www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fbook&psig=AOvVaw33WPoOlWqfP_fY6H3fuuW8&ust=1671950915917000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKiYudXUkfwCFQAAAAAdAAAAABAJ",
-  //       title:"javaScripte",
-  //       amount:"$500",
-  //     },
-  //     {
-  //       image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fbook&psig=AOvVaw33WPoOlWqfP_fY6H3fuuW8&ust=1671950915917000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKiYudXUkfwCFQAAAAAdAAAAABAJ",
-  //       title:"React js",
-  //       amount:"$320",
-  //     },
-  //     {
-  //       image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fbook&psig=AOvVaw33WPoOlWqfP_fY6H3fuuW8&ust=1671950915917000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKiYudXUkfwCFQAAAAAdAAAAABAJ",
-  //       title:"React js",
-  //       amount:"$320",
-  //     },
-  // ]
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const getExpenses = async () => {
@@ -39,7 +16,7 @@ function App() {
       }
       const data = await response.json();
       const fetchedExpenses = data.items.map((expense) => {
-        return { ...expense.volumeInfo };
+        return { ...expense.volumeInfo ,id: Math.random().toString(),};
       });
       console.log(fetchedExpenses);
       setExpenses(fetchedExpenses);
@@ -66,7 +43,6 @@ function App() {
       {isLoading && loadingList}
       <div className="container">
         {!isLoading &&bookList}
-       {/*  {!isLoading && <Card books={expenses}/>} */}
         
       </div>
       <button className='btn' onClick={getExpenses}>Get Expenses</button>
