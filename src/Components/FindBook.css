@@ -1,0 +1,23 @@
+ .search {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ .search input {
+     outline: 0;
+     border: 0;
+     width: 350px;
+     height: 35px;
+     padding: 0 0.5rem;
+     font-size: 15px;
+     font-weight: bold;
+ }
+ 
+ .search button {
+     outline: none;
+     border: none;
+     height: 35px;
+     padding: 0 0.5rem;
+     cursor: pointer;
+ }

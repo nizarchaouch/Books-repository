@@ -1,5 +1,6 @@
 import './App.css';
 import './Components/Card.css';
+import FindBook from './Components/FindBook';
 import NewBook from './Components/NewBook';
 import Card from './Components/Card';
 import { useState } from 'react';
@@ -41,14 +42,15 @@ function App() {
   return (
     <>
       <div className="header">
+        <FindBook />
         <NewBook onSave={addExpenseHandler} />
       </div>
-      {isLoading && loadingList }
+      {isLoading && loadingList}
       <div className="container">
         {!isLoading && bookList}
 
       </div>
-      {isbtn && btn }
+      {isbtn && btn}
     </>
   );
 }
