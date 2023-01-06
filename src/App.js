@@ -7,6 +7,7 @@ import { useState } from 'react';
 function App() {
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isbtn, setbtn] = useState(true);
   const getExpenses = async () => {
     setIsLoading(true);
     try {
@@ -16,7 +17,7 @@ function App() {
       }
       const data = await response.json();
       const fetchedExpenses = data.items.map((expense) => {
-        return { ...expense.volumeInfo ,id: Math.random().toString(),};
+        return { ...expense.volumeInfo, id: Math.random().toString(), };
       });
       console.log(fetchedExpenses);
       setExpenses(fetchedExpenses);
@@ -25,28 +26,29 @@ function App() {
       alert("something went wrong!")
     }
     setIsLoading(false);
+    setbtn(false)
   };
   const addExpenseHandler = (newExpense) => {
     console.log(newExpense);
     setExpenses([...expenses, newExpense]);
-        console.log(expenses);
+    console.log(expenses);
   };
-   const bookList = expenses.map((item) => 
+  const bookList = expenses.map((item) =>
     <Card key={item.id} iamge={item.imageLinks.smallThumbnail} title={item.title} />
-  ); 
+  );
   const loadingList = <h1 className='loading' >loading...</h1>
+  const btn = <button className='btn' onClick={getExpenses}>Get Expenses</button>
   return (
     <>
       <div className="header">
         <NewBook onSave={addExpenseHandler} />
       </div>
-      {isLoading && loadingList}
+      {isLoading && loadingList }
       <div className="container">
-        {!isLoading &&bookList}
-        
+        {!isLoading && bookList}
+
       </div>
-      <button className='btn' onClick={getExpenses}>Get Expenses</button>
-      
+      {isbtn && btn }
     </>
   );
 }
