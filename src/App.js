@@ -6,10 +6,10 @@ import Card from './Components/Card';
 import { useState } from 'react';
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
+  const [books, setbooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isbtn, setbtn] = useState(true);
-  const getExpenses = async () => {
+  const getbooks = async () => {
     setIsLoading(true);
     try {
       const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=flowers&filter=free-ebooks&key=AIzaSyCgTzxNyBTZLVvTtCBK6joWCxHaSy9gZQo" + '&maxResults=21');
@@ -17,33 +17,32 @@ function App() {
         throw new Error("Something went wrong!!!!");
       }
       const data = await response.json();
-      const fetchedExpenses = data.items.map((expense) => {
-        return { ...expense.volumeInfo, id: Math.random().toString(), };
+      const fetchedbooks = data.items.map((book) => {
+        return { ...book.volumeInfo, id: Math.random().toString(), };
       });
-      console.log(fetchedExpenses);
-      setExpenses(fetchedExpenses);
+      console.log(fetchedbooks);
+      setbooks(fetchedbooks);
     } catch (error) {
-      console.log("something went wrong!2");
       alert("something went wrong!")
     }
     setIsLoading(false);
     setbtn(false)
   };
-  const addExpenseHandler = (newExpense) => {
-    console.log(newExpense);
-    setExpenses([...expenses, newExpense]);
-    console.log(expenses);
+  const addBookHandler = (newbook) => {
+    console.log(newbook);
+    setbooks([...books, newbook]);
+    console.log(books);
   };
-  const bookList = expenses.map((item) =>
+  const bookList = books.map((item) =>
     <Card key={item.id} iamge={item.imageLinks.smallThumbnail} title={item.title} />
   );
   const loadingList = <h1 className='loading' >loading...</h1>
-  const btn = <button className='btn' onClick={getExpenses}>Get Expenses</button>
+  const btn = <button className='btn' onClick={getbooks}>Get books</button>
   return (
     <>
       <div className="header">
         <FindBook />
-        <NewBook onSave={addExpenseHandler} />
+        <NewBook onSave={addBookHandler} />
       </div>
       {isLoading && loadingList}
       <div className="container">
