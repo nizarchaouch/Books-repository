@@ -4,9 +4,13 @@ import FindBook from './Components/FindBook';
 import NewBook from './Components/NewBook';
 import Card from './Components/Card';
 import { useState } from 'react';
+import Main from './Components/Main';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import About from './Page/About';
+import Home from './Page/Home';
 
 function App() {
-  const [books, setbooks] = useState([]);
+  /* const [books, setbooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isbtn, setbtn] = useState(true);
   const getbooks = async () => {
@@ -37,10 +41,16 @@ function App() {
     <Card key={item.id} iamge={item.imageLinks.smallThumbnail} title={item.title} />
   );
   const loadingList = <h1 className='loading' >loading...</h1>
-  const btn = <button className='btn' onClick={getbooks}>Get books</button>
+  const btn = <button className='btn' onClick={getbooks}>Get books</button> */
   return (
     <>
-      <div className="header">
+      <Main />
+      <Routes>
+        <Route path="/" element={<Navigate replace to="/Home" />} />
+        <Route path="/Home" element={< Home />} />
+        <Route path="/About" element={< About />} />
+      </Routes>
+      {/* <div className="header">
         <FindBook />
         <NewBook onSave={addBookHandler} />
       </div>
@@ -49,7 +59,7 @@ function App() {
         {!isLoading && bookList}
 
       </div>
-      {isbtn && btn}
+      {isbtn && btn} */}
     </>
   );
 }
