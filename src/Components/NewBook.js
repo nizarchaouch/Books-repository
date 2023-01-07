@@ -19,10 +19,10 @@ function NewBook(props) {
     return (
         <div className="new-book">
             {!isEditing && (
-            <button type="submit" onClick={show}>Add New Book</button>
+                <button type="submit" onClick={show}>Add New Book</button>
             )}
-            {isEditing &&( <Form 
-            onsaveData={saveBookData} onCancel={stopCancel} 
+            {isEditing && (<Form
+                onsaveData={saveBookData} onCancel={stopCancel}
             />)
             }
         </div>
