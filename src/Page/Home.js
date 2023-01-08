@@ -1,6 +1,5 @@
 import '../App.css';
 import '../Components/Card.css';
-import FindBook from '../Components/FindBook';
 import NewBook from '../Components/NewBook';
 import Card from '../Components/Card';
 import { useState } from 'react';
@@ -12,13 +11,13 @@ function Home() {
   const getbooks = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=flowers&filter=free-ebooks&key=AIzaSyCgTzxNyBTZLVvTtCBK6joWCxHaSy9gZQo" + '&maxResults=23');
+      const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=flowers&filter=free-ebooks&key=AIzaSyCgTzxNyBTZLVvTtCBK6joWCxHaSy9gZQo" + '&maxResults=39');
       if (!response.ok) {
         throw new Error("Something went wrong!!!!");
       }
       const data = await response.json();
       const fetchedbooks = data.items.map((book) => {
-        return { ...book.volumeInfo, id: Math.random().toString(), };
+        return { ...book.volumeInfo, id: Math.random().toString()};
       });
       console.log(fetchedbooks);
       setbooks(fetchedbooks);
@@ -33,16 +32,15 @@ function Home() {
     setbooks([...books, newbook]);
     console.log(books);
   };
+
   const bookList = books.map((item) =>
     <Card key={item.id} iamge={item.imageLinks.smallThumbnail} title={item.title} />
   );
   const loadingList = <h1 className='loading' >loading...</h1>
   const btn = <button className='btn' onClick={getbooks}>Get books</button>
-
   return (
     <>
       <div className="header">
-        <FindBook />
         <NewBook onSave={addBookHandler} />
       </div>
       {isLoading && loadingList}
