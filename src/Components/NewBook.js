@@ -2,7 +2,7 @@ import "./NewBook.css";
 import Form from "./Form";
 import { useState } from "react";
 function NewBook(props) {
-    const [isEditing, setisEditing] = useState(false)
+    const [isEditing, setisEditing] = useState(false);
     const saveBookData = (e) => {
         const BookData = {
             ...e,
